@@ -74,3 +74,21 @@ body {
     margin: 5px;
 }
 
+#five_day_title {
+    border-style: groove;
+    margin: 5px;
+}
+
+#five_day_list {
+    display: flex;
+    justify-content: space-around;
+    border-style: groove;
+    margin: 5px;
+}
+
+#five_day_forecast_element {
+    width: 15%;
+    border-style: groove;
+    margin: 5px;
+}
+
