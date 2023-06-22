@@ -1,0 +1,48 @@
+* {
+    font-size: 105%;
+    font-weight: 600;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#content_header {
+    display: flex;
+    justify-content: center;
+
+    border-style: groove;
+
+    margin: 5px;
+}
+
+#content_weather_elements {
+    display: flex;
+    justify-content: center;
+
+    border-style: groove;
+
+    margin: 5px;
+}
+
+#weather_city_search {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+    border-style: groove;
+
+    margin: 5px;
+}
+
+#weather_city_display {
+    border-style: groove;
+
+    margin: 5px;
+}
+
+.city_search_spacing {
+    margin: 5px;
+}
