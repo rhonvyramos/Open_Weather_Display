@@ -20,7 +20,8 @@ body {
 
 #content_weather_elements {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    height: 700px;
 
     border-style: groove;
 
@@ -37,12 +38,39 @@ body {
     margin: 5px;
 }
 
+.city_search_spacing {
+    margin: 5px;
+}
+
 #weather_city_display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 75%;
+
     border-style: groove;
 
     margin: 5px;
 }
 
-.city_search_spacing {
+#city_display_main {
+    border-style: groove;
     margin: 5px;
 }
+
+#display_main_title {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.main_display_text_spacing {
+    margin-left: 5px;
+}
+
+#city_display_five_day {
+    border-style: groove;
+
+    margin: 5px;
+}
+
