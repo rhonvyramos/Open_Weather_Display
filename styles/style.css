@@ -38,6 +38,11 @@ body {
     margin: 5px;
 }
 
+#city_search_recent {
+    display: flex;
+    flex-direction: column;
+}
+
 .city_search_spacing {
     margin: 5px;
 }
