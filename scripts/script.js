@@ -91,7 +91,10 @@ async function search_city() {
             .css("font-size", "75%"); ; 
     };
 
-    display_main_title.innerHTML = json_city_weather_data.name;
+    //display_main_title.innerHTML = json_city_weather_data.name;
+    $(display_main_title).text(json_city_weather_data.name);
+    $(display_main_title).append("<img src=\"https://openweathermap.org/img/wn/" + json_city_weather_data.weather[0].icon + ".png\"/>");
+
     display_main_temp.innerHTML = "Temperature(°F): " + json_city_weather_data.main.temp + "°F";
     display_main_wind.innerHTML = "Wind Speed: " + json_city_weather_data.wind.speed + " MPH";
     display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
