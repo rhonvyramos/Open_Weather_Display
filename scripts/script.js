@@ -11,4 +11,11 @@ $(function () {
     };
 });
 
-console.log(api_key)
+let city_search_input = document.getElementById("city_search_input");
+let city_search_button = document.getElementById("city_search_button");
+
+city_search_button.addEventListener("click", search_city);
+
+function search_city() {
+    console.log(city_search_input.value);
+};
