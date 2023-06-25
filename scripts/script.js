@@ -54,10 +54,6 @@ async function search_city() {
     // ensures duplicate elements cannot be created when button is pressed
     $("[id=five_day_list]").empty();
 
-    // adds recently searched city as new button
-    // buttons for recently searched cities are saved and function almost identically to search city button
-    $("[id=city_search_recent]").append("<button>" + search_input + "</button>");
-
     let city_weather_data = await fetch("https://api.openweathermap.org/data/2.5/weather?lat="
                           + city_lat 
                           + "&lon=" 
@@ -128,8 +124,13 @@ async function search_city() {
     display_main_temp.innerHTML = "Temperature(°F): " + json_city_weather_data.main.temp + "°F";
     display_main_wind.innerHTML = "Wind Speed: " + json_city_weather_data.wind.speed + " MPH";
     display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
+
+    // adds recently searched city as new button
+    // buttons for recently searched cities are saved and function almost identically to search city button
+    $("[id=city_search_recent]").append("<button id=\"" + json_city_weather_data.name + "\">" + json_city_weather_data.name + "</button>");
 };
 
+// function that clears all elements inside the recently searched city section
 function clear_recently_searched() {
     $("[id=city_search_recent]").empty();
 };
