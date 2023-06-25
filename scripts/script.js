@@ -24,15 +24,12 @@ city_search_button.addEventListener("click", search_city);
 
 async function search_city() {
     let search_input = (city_search_input.value).toLowerCase();;
-    if(search_input != "london") {
-        return;
-    };
 
-    let london_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
+    let city_location_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
                     + search_input 
                     + "&limit=5&appid=" + api_key);
     
-    let json_city_location_data = await london_data.json();
+    let json_city_location_data = await city_location_data.json();
 
     let city_name = json_city_location_data[0]["name"];
     let city_lat = json_city_location_data[0]["lat"];
