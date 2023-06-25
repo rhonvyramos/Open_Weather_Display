@@ -73,12 +73,16 @@ async function search_city() {
             .css("margin", "5px");
 
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"date_" + y + "\"></p>");
+        $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"icon_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"temp_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"wind_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"humidity_" + y + "\"></p>");
 
+        // city_five_day_forecast_list[y].weather[0].icon + ".png"
         $("[id=date_" + y + "]").text(city_five_day_forecast_list[y].dt_txt)
             .css("font-size", "75%"); 
+        $("[id=icon_" + y + "]")
+            .append("<img src=\"https://openweathermap.org/img/wn/" + city_five_day_forecast_list[y].weather[0].icon + ".png\"/>");
         $("[id=temp_" + y + "]").text("Temperature(°F): " + city_five_day_forecast_list[y].main.temp + "°F")
             .css("font-size", "75%"); 
         $("[id=wind_" + y + "]").text("Wind: " + city_five_day_forecast_list[y].wind.speed + " MPH")
