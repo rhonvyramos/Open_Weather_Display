@@ -28,6 +28,9 @@ let display_main_humidity = document.getElementById("display_main_humidity");
 // elements that represent the five day forecast display
 let five_day_list = document.getElementById("five_day_list");
 
+// element that represents the button to clear recently searched cities
+let clear_recent_button = document.getElementById("clear_recent_button");
+
 async function search_city() {
     let search_input = (city_search_input.value).toLowerCase();
 
@@ -127,4 +130,9 @@ async function search_city() {
     display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
 };
 
+function clear_recently_searched() {
+    $("[id=city_search_recent]").empty();
+};
+
 city_search_button.addEventListener("click", search_city);
+clear_recent_button.addEventListener("click", clear_recently_searched);
