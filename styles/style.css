@@ -67,6 +67,9 @@ body {
 #display_main_title {
     font-size: 48px;
     font-weight: bold;
+
+    display: flex;
+    justify-content: space-around;
 }
 
 .main_display_text_spacing {

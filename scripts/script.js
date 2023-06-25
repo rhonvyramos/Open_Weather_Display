@@ -111,8 +111,15 @@ async function search_city() {
             .css("font-size", "75%"); ; 
     };
 
-    //display_main_title.innerHTML = json_city_weather_data.name;
     $(display_main_title).text(json_city_weather_data.name);
+
+    let date_from_dt = new Date(json_city_weather_data.dt * 1000);
+    let date_year = date_from_dt.getFullYear();
+    let date_month = date_from_dt.getMonth();
+    let date_day = date_from_dt.getDate();
+    let date_full = date_month + "/" + date_day + "/" + date_year;
+
+    $(display_main_title).append("<div>" + date_full + "</div>")
     $(display_main_title).append("<img src=\"https://openweathermap.org/img/wn/" + json_city_weather_data.weather[0].icon + ".png\"/>");
 
     display_main_temp.innerHTML = "Temperature(°F): " + json_city_weather_data.main.temp + "°F";
