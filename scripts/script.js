@@ -25,6 +25,9 @@ let display_main_temp = document.getElementById("display_main_temp");
 let display_main_wind = document.getElementById("display_main_wind");
 let display_main_humidity = document.getElementById("display_main_humidity");
 
+// elements that represent the five day forecast display
+let five_day_list = document.getElementById("five_day_list");
+
 city_search_button.addEventListener("click", search_city);
 
 async function search_city() {
@@ -64,7 +67,16 @@ async function search_city() {
         city_five_day_forecast_list.push(json_city_five_day_forecast_data.list[x]);
     };
 
-    console.log(city_five_day_forecast_list)
+    console.log(city_five_day_forecast_list[0].main.temp);
+    console.log(city_five_day_forecast_list[0].weather[0].main);
+    console.log(city_five_day_forecast_list[0].wind.speed);
+    console.log(city_five_day_forecast_list[0].main.humidity);
+
+    for(var y = 0; y < 5; y++) {
+        $(five_day_list).append("<div id=\"five_day_forecast_element_" + y + "\"></div>")
+        $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"temp_" + y + "\"></p>");
+        $("[id=temp_" + y + "]").text("Temperature: " + city_five_day_forecast_list[y].main.temp); 
+    };
 
     display_main_title.innerHTML = json_city_weather_data.name;
     display_main_temp.innerHTML = "Temperature(°F): " + json_city_weather_data.main.temp + "°F";
