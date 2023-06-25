@@ -16,6 +16,17 @@ let city_search_button = document.getElementById("city_search_button");
 
 city_search_button.addEventListener("click", search_city);
 
-function search_city() {
-    console.log(city_search_input.value);
+async function search_city() {
+    let search_input = (city_search_input.value).toLowerCase();;
+    if(search_input != "london") {
+        return;
+    };
+
+    let london_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
+                    + search_input 
+                    + "&limit=5&appid={key_here}");
+    
+    let json_city_data = await london_data.json();
+
+    console.log(json_city_data);
 };
