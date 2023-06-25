@@ -28,7 +28,7 @@ let display_main_humidity = document.getElementById("display_main_humidity");
 city_search_button.addEventListener("click", search_city);
 
 async function search_city() {
-    let search_input = (city_search_input.value).toLowerCase();;
+    let search_input = (city_search_input.value).toLowerCase();
 
     let city_location_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
                     + search_input 
@@ -36,7 +36,6 @@ async function search_city() {
     
     let json_city_location_data = await city_location_data.json();
 
-    let city_name = json_city_location_data[0]["name"];
     let city_lat = json_city_location_data[0]["lat"];
     let city_lon = json_city_location_data[0]["lon"];
     
@@ -49,8 +48,24 @@ async function search_city() {
     
     let json_city_weather_data = await city_weather_data.json();
 
+    let city_five_day_forecast_data = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat="
+                               + city_lat
+                               + "&lon="
+                               + city_lon 
+                               + "&appid="
+                               + api_key);
+
+    let json_city_five_day_forecast_data = await city_five_day_forecast_data.json();
+
+    var city_five_day_forecast_list = [];
+    for(var x = 0; x < 5; x++) {
+        city_five_day_forecast_list.push(json_city_five_day_forecast_data.list[x]);
+    };
+
+    console.log(city_five_day_forecast_list)
+
     display_main_title.innerHTML = json_city_weather_data.name;
-    display_main_temp.innerHTML = json_city_weather_data.main.temp;
-    display_main_wind.innerHTML = json_city_weather_data.wind.speed;
-    display_main_humidity.innerHTML = json_city_weather_data.main.humidity;
+    display_main_temp.innerHTML = "Temperature(°F): " + json_city_weather_data.main.temp + "°F";
+    display_main_wind.innerHTML = "Wind Speed: " + json_city_weather_data.wind.speed + " MPH";
+    display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
 };
