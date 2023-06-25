@@ -31,19 +31,30 @@ let five_day_list = document.getElementById("five_day_list");
 async function search_city() {
     let search_input = (city_search_input.value).toLowerCase();
 
-    // empties five day forecast elements
-    // ensures duplicate elements cannot be created when button is pressed
-    $("[id=five_day_list").empty();
-    
     let city_location_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
-                    + search_input 
-                    + "&limit=5&appid=" + api_key);
-    
+                           + search_input 
+                           + "&limit=5&appid=" 
+                           + api_key);
+
     let json_city_location_data = await city_location_data.json();
+
+    // ends the function if neither city or data is found
+    // api calls retrieves from url successfully but may return an empty response if user inputs an unrecognized city
+    if(!Object.keys(json_city_location_data).length) {
+        return;
+    };
 
     let city_lat = json_city_location_data[0]["lat"];
     let city_lon = json_city_location_data[0]["lon"];
-    
+
+    // empties five day forecast elements
+    // ensures duplicate elements cannot be created when button is pressed
+    $("[id=five_day_list]").empty();
+
+    // adds recently searched city as new button
+    // buttons for recently searched cities are saved and function almost identically to search city button
+    $("[id=city_search_recent]").append("<button>" + search_input + "</button>");
+
     let city_weather_data = await fetch("https://api.openweathermap.org/data/2.5/weather?lat="
                           + city_lat 
                           + "&lon=" 
@@ -82,8 +93,13 @@ async function search_city() {
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"wind_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"humidity_" + y + "\"></p>");
 
-        // city_five_day_forecast_list[y].weather[0].icon + ".png"
-        $("[id=date_" + y + "]").text(city_five_day_forecast_list[y].dt_txt)
+        // splits the date away from the time 
+        let date_text = city_five_day_forecast_list[y].dt_txt;
+        let date_only = date_text.split(" ");
+        let date_split = date_only[0].split("-");
+        let date_reformat = date_split[1] + "/" + date_split[2] + "/" + date_split[0];
+
+        $("[id=date_" + y + "]").text(date_reformat)
             .css("font-size", "75%"); 
         $("[id=icon_" + y + "]")
             .append("<img src=\"https://openweathermap.org/img/wn/" + city_five_day_forecast_list[y].weather[0].icon + ".png\"/>");
