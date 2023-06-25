@@ -67,15 +67,22 @@ async function search_city() {
         city_five_day_forecast_list.push(json_city_five_day_forecast_data.list[x]);
     };
 
-    console.log(city_five_day_forecast_list[0].main.temp);
-    console.log(city_five_day_forecast_list[0].weather[0].main);
-    console.log(city_five_day_forecast_list[0].wind.speed);
-    console.log(city_five_day_forecast_list[0].main.humidity);
-
     for(var y = 0; y < 5; y++) {
         $(five_day_list).append("<div id=\"five_day_forecast_element_" + y + "\"></div>")
+        
+        $("[id=five_day_forecast_element_" + y + "]")
+            .css("border-style","groove")
+            .css("margin", "5px");
+
+        $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"date_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"temp_" + y + "\"></p>");
+        $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"wind_" + y + "\"></p>");
+        $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"humidity_" + y + "\"></p>");
+
+        $("[id=date_" + y + "]").text(city_five_day_forecast_list[y].dt_txt); 
         $("[id=temp_" + y + "]").text("Temperature: " + city_five_day_forecast_list[y].main.temp); 
+        $("[id=wind_" + y + "]").text("Wind: " + city_five_day_forecast_list[y].wind.speed + " MPH"); 
+        $("[id=humidity_" + y + "]").text("Humidity: " + city_five_day_forecast_list[y].main.humidity + "%"); 
     };
 
     display_main_title.innerHTML = json_city_weather_data.name;
