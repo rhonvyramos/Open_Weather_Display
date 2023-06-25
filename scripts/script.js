@@ -31,6 +31,10 @@ let five_day_list = document.getElementById("five_day_list");
 async function search_city() {
     let search_input = (city_search_input.value).toLowerCase();
 
+    // empties five day forecast elements
+    // ensures duplicate elements cannot be created when button is pressed
+    $("[id=five_day_list").empty();
+    
     let city_location_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
                     + search_input 
                     + "&limit=5&appid=" + api_key);
