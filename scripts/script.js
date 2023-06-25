@@ -44,7 +44,8 @@ async function search_city() {
                           + "&lon=" 
                           + city_lon 
                           + "&appid=" 
-                          + api_key);
+                          + api_key 
+                          + "&units=imperial");
     
     let json_city_weather_data = await city_weather_data.json();
 
@@ -53,7 +54,8 @@ async function search_city() {
                                + "&lon="
                                + city_lon 
                                + "&appid="
-                               + api_key);
+                               + api_key 
+                               + "&units=imperial");
 
     let json_city_five_day_forecast_data = await city_five_day_forecast_data.json();
 
