@@ -28,8 +28,6 @@ let display_main_humidity = document.getElementById("display_main_humidity");
 // elements that represent the five day forecast display
 let five_day_list = document.getElementById("five_day_list");
 
-city_search_button.addEventListener("click", search_city);
-
 async function search_city() {
     let search_input = (city_search_input.value).toLowerCase();
 
@@ -79,10 +77,14 @@ async function search_city() {
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"wind_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"humidity_" + y + "\"></p>");
 
-        $("[id=date_" + y + "]").text(city_five_day_forecast_list[y].dt_txt); 
-        $("[id=temp_" + y + "]").text("Temperature: " + city_five_day_forecast_list[y].main.temp); 
-        $("[id=wind_" + y + "]").text("Wind: " + city_five_day_forecast_list[y].wind.speed + " MPH"); 
-        $("[id=humidity_" + y + "]").text("Humidity: " + city_five_day_forecast_list[y].main.humidity + "%"); 
+        $("[id=date_" + y + "]").text(city_five_day_forecast_list[y].dt_txt)
+            .css("font-size", "75%"); 
+        $("[id=temp_" + y + "]").text("Temperature(°F): " + city_five_day_forecast_list[y].main.temp + "°F")
+            .css("font-size", "75%"); 
+        $("[id=wind_" + y + "]").text("Wind: " + city_five_day_forecast_list[y].wind.speed + " MPH")
+            .css("font-size", "75%"); ; 
+        $("[id=humidity_" + y + "]").text("Humidity: " + city_five_day_forecast_list[y].main.humidity + "%")
+            .css("font-size", "75%"); ; 
     };
 
     display_main_title.innerHTML = json_city_weather_data.name;
@@ -90,3 +92,5 @@ async function search_city() {
     display_main_wind.innerHTML = "Wind Speed: " + json_city_weather_data.wind.speed + " MPH";
     display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
 };
+
+city_search_button.addEventListener("click", search_city);
