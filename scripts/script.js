@@ -64,12 +64,12 @@ async function search_city() {
 
     var city_five_day_forecast_list = [];
     for(var x = 0; x < 5; x++) {
-        city_five_day_forecast_list.push(json_city_five_day_forecast_data.list[x]);
+        city_five_day_forecast_list.push(json_city_five_day_forecast_data.list[x * 8]);
     };
 
     for(var y = 0; y < 5; y++) {
         $(five_day_list).append("<div id=\"five_day_forecast_element_" + y + "\"></div>")
-        
+
         $("[id=five_day_forecast_element_" + y + "]")
             .css("border-style","groove")
             .css("margin", "5px");
