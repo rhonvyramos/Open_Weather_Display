@@ -15,10 +15,15 @@ $(function () {
  * main website functionality body
  */
 
+// elements that represent the city search function
 let city_search_input = document.getElementById("city_search_input");
 let city_search_button = document.getElementById("city_search_button");
 
+// elements that represent the main weather display
 let display_main_title = document.getElementById("display_main_title");
+let display_main_temp = document.getElementById("display_main_temp");
+let display_main_wind = document.getElementById("display_main_wind");
+let display_main_humidity = document.getElementById("display_main_humidity");
 
 city_search_button.addEventListener("click", search_city);
 
@@ -45,4 +50,7 @@ async function search_city() {
     let json_city_weather_data = await city_weather_data.json();
 
     display_main_title.innerHTML = json_city_weather_data.name;
+    display_main_temp.innerHTML = json_city_weather_data.main.temp;
+    display_main_wind.innerHTML = json_city_weather_data.wind.speed;
+    display_main_humidity.innerHTML = json_city_weather_data.main.humidity;
 };
