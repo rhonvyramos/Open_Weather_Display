@@ -32,6 +32,9 @@ let five_day_list = document.getElementById("five_day_list");
 // element that represents the button to clear recently searched cities
 let clear_recent_button = document.getElementById("clear_recent_button");
 
+// element that represents the area where recently searched cities buttons will appear
+let city_search_recent = document.getElementById("city_search_recent");
+
 async function search_city(recently_searched) {
 
     // ends function if input is empty
@@ -159,6 +162,8 @@ function create_recently_searched(city_name) {
     if(city_name == "" || city_name == null) {
         return;
     };
+
+    city_search_recent.innerHTML = "";
 
     // creates a new button with the city_name variable as its label
     $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>");

@@ -91,6 +91,8 @@ body {
 #city_search_recent {
     display: flex;
     flex-direction: column;
+
+    text-align: center;
 }
 
 .city_search_spacing {
