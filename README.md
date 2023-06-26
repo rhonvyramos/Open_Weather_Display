@@ -10,7 +10,10 @@ Download the repository on your machine and run on a live server.
 Follow sign-in instructions from the OpenWeatherMap website to activate an API key: https://openweathermap.org/
 
 ## Use
-TODO
+Follow the link below the display the website:
+https://rhonvyramos.github.io/Open_Weather_Display/
+
+**NOTE:** this will only show the initial display. This GitHub page will not work unless your own, cloned repository has been assigned a legitimate API key.
 
 ## Screenshot
 Below is how the web page will initially appear to the user. Display elements will change accordingly should the user successfully search for city weather conditions.
