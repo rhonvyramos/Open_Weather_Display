@@ -34,7 +34,7 @@ let clear_recent_button = document.getElementById("clear_recent_button");
 async function search_city(recently_searched) {
 
     // ends function if input is empty
-    if(recently_searched == "") {
+    if(recently_searched == "" || recently_searched == "undefined") {
         return;
     };
 
