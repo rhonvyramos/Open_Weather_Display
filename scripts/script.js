@@ -31,8 +31,16 @@ let five_day_list = document.getElementById("five_day_list");
 // element that represents the button to clear recently searched cities
 let clear_recent_button = document.getElementById("clear_recent_button");
 
-async function search_city() {
-    let search_input = (city_search_input.value).toLowerCase();
+var recently_searched_city;
+
+async function search_city(recently_searched) {
+
+    // ends function if input is empty
+    if(recently_searched == "") {
+        return;
+    };
+
+    var search_input = (recently_searched).toLowerCase();
 
     let city_location_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
                            + search_input 
@@ -124,10 +132,6 @@ async function search_city() {
     display_main_temp.innerHTML = "Temperature(°F): " + json_city_weather_data.main.temp + "°F";
     display_main_wind.innerHTML = "Wind Speed: " + json_city_weather_data.wind.speed + " MPH";
     display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
-
-    // adds recently searched city as new button
-    // buttons for recently searched cities are saved and function almost identically to search city button
-    $("[id=city_search_recent]").append("<button id=\"" + json_city_weather_data.name + "\">" + json_city_weather_data.name + "</button>");
 };
 
 // function that clears all elements inside the recently searched city section
@@ -135,5 +139,20 @@ function clear_recently_searched() {
     $("[id=city_search_recent]").empty();
 };
 
-city_search_button.addEventListener("click", search_city);
+function create_recently_searched(city_name) {
+    // adds recently searched city as new button
+    // buttons for recently searched cities are saved and function almost identically to search city button
+    $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>");
+
+    /*$(".searched").on("click", function() {
+        console.log("button pressed")
+        search_city($(this).attr("id"));
+    });*/
+};
+
+city_search_button.addEventListener("click", function() {
+    search_city(city_search_input.value);
+});
 clear_recent_button.addEventListener("click", clear_recently_searched);
+
+
