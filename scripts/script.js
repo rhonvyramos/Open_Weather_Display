@@ -40,6 +40,7 @@ async function search_city(recently_searched) {
 
     var search_input = (recently_searched).toLowerCase();
 
+    // retrieves city geographical information
     let city_location_data = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" 
                            + search_input 
                            + "&limit=5&appid=" 
@@ -68,8 +69,10 @@ async function search_city(recently_searched) {
                           + api_key 
                           + "&units=imperial");
     
+    // retrieves city weather data
     let json_city_weather_data = await city_weather_data.json();
 
+    // retrieves five day forecast for the city
     let city_five_day_forecast_data = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat="
                                + city_lat
                                + "&lon="
@@ -80,11 +83,13 @@ async function search_city(recently_searched) {
 
     let json_city_five_day_forecast_data = await city_five_day_forecast_data.json();
 
+    // assigns the first five days as objects in a list
     var city_five_day_forecast_list = [];
     for(var x = 0; x < 5; x++) {
         city_five_day_forecast_list.push(json_city_five_day_forecast_data.list[x * 8]);
     };
 
+    // creates the five day forecast elements
     for(var y = 0; y < 5; y++) {
         $(five_day_list).append("<div id=\"five_day_forecast_element_" + y + "\"></div>")
 
@@ -116,8 +121,10 @@ async function search_city(recently_searched) {
             .css("font-size", "75%"); ; 
     };
 
+    // creates the main display elements
     $(display_main_title).text(json_city_weather_data.name);
 
+    // splits date text and reformats text into mm/dd/yyyy
     let date_from_dt = new Date(json_city_weather_data.dt * 1000);
     let date_year = date_from_dt.getFullYear();
     let date_month = date_from_dt.getMonth();
@@ -142,10 +149,13 @@ function clear_recently_searched() {
 
 // function to add a recently searched city as a new button 
 function create_recently_searched(city_name) {
+
+    // if the city_name variable is empty or null, simply end program execution here
     if(city_name == "" || city_name == null) {
         return;
     };
 
+    // creates a new button with the city_name variable as its label
     $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>")
         .click(function() {
             city_search_input = city_name;
