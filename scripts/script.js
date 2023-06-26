@@ -94,8 +94,10 @@ async function search_city(recently_searched) {
         $(five_day_list).append("<div id=\"five_day_forecast_element_" + y + "\"></div>")
 
         $("[id=five_day_forecast_element_" + y + "]")
-            .css("border-style","groove")
-            .css("margin", "5px");
+            .css("margin", "5px")
+            .css("background-color", "rgba(0, 110, 255, 0.7)")
+            .css("padding", "10px")
+            .css("border-radius", "10px");
 
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"date_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"icon_" + y + "\"></p>");
@@ -118,7 +120,7 @@ async function search_city(recently_searched) {
         $("[id=wind_" + y + "]").text("Wind: " + city_five_day_forecast_list[y].wind.speed + " MPH")
             .css("font-size", "75%"); ; 
         $("[id=humidity_" + y + "]").text("Humidity: " + city_five_day_forecast_list[y].main.humidity + "%")
-            .css("font-size", "75%"); ; 
+            .css("font-size", "75%"); 
     };
 
     // creates the main display elements

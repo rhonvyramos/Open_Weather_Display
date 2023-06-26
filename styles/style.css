@@ -10,6 +10,11 @@ body {
     flex-direction: column;
 }
 
+.content_holder {
+    box-shadow: 5px 5px 3px lightgray;
+    background-color: white;
+}
+
 /* header element styling */
 #content_header {
     display: flex;
@@ -17,7 +22,7 @@ body {
 
     border-style: groove;
 
-    margin: 5px;
+    margin: 10px;
 }
 
 /* main weather display styling */
@@ -28,17 +33,23 @@ body {
 
     border-style: groove;
 
-    margin: 5px;
+    margin: 10px;
 }
 
 #weather_city_search {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
 
-    border-style: groove;
+    border-radius: 10px;
 
-    margin: 5px;
+    margin: 10px;
+
+    background-color: rgba(0, 110, 255, 0.7);
+}
+
+#city_search_input {
+    resize: none;
 }
 
 /* recently searched cities buttons styling */
@@ -60,12 +71,15 @@ body {
 
     border-style: groove;
 
-    margin: 5px;
+    margin: 10px;
 }
 
 #city_display_main {
-    border-style: groove;
-    margin: 5px;
+    margin: 10px;
+
+    background-color: rgba(0, 110, 255, 0.7);
+
+    border-radius: 10px;
 }
 
 #display_main_title {
@@ -77,32 +91,30 @@ body {
 }
 
 .main_display_text_spacing {
-    margin-left: 5px;
+    margin: 10px;
 }
 
 /* five day forecast elements styling */
 #city_display_five_day {
     border-style: groove;
 
-    margin: 5px;
+    margin: 10px;
 }
 
 #five_day_title {
-    border-style: groove;
-    margin: 5px;
+    margin: 10px;
 }
 
 #five_day_list {
     display: flex;
     justify-content: space-around;
-    border-style: groove;
-    margin: 5px;
+    margin: 10px;
 }
 
 #five_day_forecast_element {
     width: 15%;
     border-style: groove;
-    margin: 5px;
+    margin: 10px;
 }
 
 /* clear recently searched cities button styling */

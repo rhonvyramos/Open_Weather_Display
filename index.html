@@ -14,15 +14,15 @@
   <body>
 
     <!-- header elements-->
-    <section id="content_header">
+    <section id="content_header" class="content_holder">
         <h1 id="header_title">Open Weather Dashboard</h1>
     </section>
 
     <!-- main body elements-->
-    <section id="content_weather_elements">
+    <section id="content_weather_elements" class="content_holder">
 
         <!-- search input elements-->
-        <section id="weather_city_search">
+        <section id="weather_city_search" class="content_holder">
             <div id="city_search_title" class="city_search_spacing">Search a Specific City:</div>
             <textarea id="city_search_input" class="city_search_spacing" placeholder="City name here..."></textarea>
             <button id="city_search_button" class="city_search_spacing">Search!</button>
@@ -35,10 +35,10 @@
         </section>
 
         <!-- city weather display elements -->
-        <section id="weather_city_display">
+        <section id="weather_city_display" class="content_holder">
 
             <!-- main weather display elements-->
-            <div id="city_display_main">
+            <div id="city_display_main" class="content_holder">
                 <p id="display_main_title" class="main_display_text_spacing">Your city's weather will appear here...</p>
                 <p id="display_main_temp" class="main_display_text_spacing"></p>
                 <p id="display_main_wind" class="main_display_text_spacing"></p>
@@ -46,7 +46,7 @@
             </div>
 
             <!-- five day forecast elements-->
-            <div id="city_display_five_day">
+            <div id="city_display_five_day" class="content_holder">
                 <p id="five_day_title">Five-Day Forecast: </p>
                 <div id="five_day_list">
                     <!-- will contain forecast elements-->
