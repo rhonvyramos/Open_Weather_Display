@@ -13,4 +13,7 @@ Follow sign-in instructions from the OpenWeatherMap website to activate an API k
 TODO
 
 ## Screenshot
-TODO
+Below is how the web page will initially appear to the user. Display elements will change accordingly should the user successfully search for city weather conditions.
+
+![image](https://github.com/rhonvyramos/Open_Weather_Display/assets/126701940/328cbb76-ed2e-451c-a490-334c159883b6)
+
