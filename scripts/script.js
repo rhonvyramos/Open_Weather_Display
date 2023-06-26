@@ -33,7 +33,7 @@ let five_day_list = document.getElementById("five_day_list");
 let clear_recent_button = document.getElementById("clear_recent_button");
 
 // element that represents the area where recently searched cities buttons will appear
-let city_search_recent = document.getElementById("city_search_recent");
+var city_search_recent = document.getElementById("city_search_recent");
 
 async function search_city(recently_searched) {
 
@@ -152,7 +152,10 @@ async function search_city(recently_searched) {
 
 // function that clears all elements inside the recently searched city section
 function clear_recently_searched() {
-    $("[id=city_search_recent]").empty();
+    $("[id=city_search_recent]").innerHTML = "";
+
+    // clears local storage entirely
+    localStorage.clear();
     city_search_recent.innerHTML = "Search history emptied..."
 };
 
@@ -164,10 +167,11 @@ function create_recently_searched(city_name) {
         return;
     };
 
-    city_search_recent.innerHTML = "";
-
     // creates a new button with the city_name variable as its label
     $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>");
+
+    // sets localStorage to hold newly created html elements
+    localStorage.setItem("city_search_recent", city_search_recent.innerHTML);
 };
 
 // button to search input city
@@ -177,6 +181,9 @@ city_search_button.addEventListener("click", async function() {
 
 // button to clear recently searched cities list
 clear_recent_button.addEventListener("click", clear_recently_searched);
+
+// saves recently searched cities html elements into localStorage
+$(city_search_recent).append(localStorage.getItem("city_search_recent"));
 
 // button elements that are created when the api is successfully retrieved
 // searches the city that is on their label
