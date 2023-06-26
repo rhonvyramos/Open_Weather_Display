@@ -34,7 +34,7 @@ let clear_recent_button = document.getElementById("clear_recent_button");
 async function search_city(recently_searched) {
 
     // ends function if input is empty
-    if(recently_searched == "") {
+    if(recently_searched == "" || recently_searched == null) {
         return;
     };
 
@@ -138,7 +138,6 @@ async function search_city(recently_searched) {
     display_main_wind.innerHTML = "Wind Speed: " + json_city_weather_data.wind.speed + " MPH";
     display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
 
-    // returns the name of the city 
     return json_city_weather_data.name;
 };
 
@@ -156,10 +155,7 @@ function create_recently_searched(city_name) {
     };
 
     // creates a new button with the city_name variable as its label
-    $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>")
-        .click(function() {
-            city_search_input = city_name;
-        });
+    $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>");
 };
 
 // button to search input city
@@ -169,5 +165,11 @@ city_search_button.addEventListener("click", async function() {
 
 // button to clear recently searched cities list
 clear_recent_button.addEventListener("click", clear_recently_searched);
+
+// button elements that are created when the api is successfully retrieved
+// searches the city that is on their label
+$("[id=city_search_recent]").on("click", ".searched", async function() {
+    await(search_city($(this).attr("id")));
+});
 
 
