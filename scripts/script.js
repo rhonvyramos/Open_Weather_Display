@@ -34,7 +34,7 @@ let clear_recent_button = document.getElementById("clear_recent_button");
 async function search_city(recently_searched) {
 
     // ends function if input is empty
-    if(recently_searched == "" || recently_searched == "undefined") {
+    if(recently_searched == "") {
         return;
     };
 
@@ -142,9 +142,13 @@ function clear_recently_searched() {
 
 // function to add a recently searched city as a new button 
 function create_recently_searched(city_name) {
+    if(city_name == "" || city_name == null) {
+        return;
+    };
+
     $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>")
         .click(function() {
-            city_search_input.value = city_name;
+            city_search_input = city_name;
         });
 };
 
