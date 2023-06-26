@@ -4,11 +4,13 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* main body styling */
 body {
     display: flex;
     flex-direction: column;
 }
 
+/* header element styling */
 #content_header {
     display: flex;
     justify-content: center;
@@ -18,6 +20,7 @@ body {
     margin: 5px;
 }
 
+/* main weather display styling */
 #content_weather_elements {
     display: flex;
     justify-content: space-around;
@@ -38,6 +41,7 @@ body {
     margin: 5px;
 }
 
+/* recently searched cities buttons styling */
 #city_search_recent {
     display: flex;
     flex-direction: column;
@@ -76,6 +80,7 @@ body {
     margin-left: 5px;
 }
 
+/* five day forecast elements styling */
 #city_display_five_day {
     border-style: groove;
 
@@ -100,6 +105,7 @@ body {
     margin: 5px;
 }
 
+/* clear recently searched cities button styling */
 #clear_recent_button {
     margin: 5px;
 }
