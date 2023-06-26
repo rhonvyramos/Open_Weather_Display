@@ -98,7 +98,8 @@ async function search_city(recently_searched) {
             .css("margin", "20px")
             .css("background-color", "rgba(0, 110, 255, 0.7)")
             .css("padding", "10px")
-            .css("border-radius", "10px");
+            .css("border-radius", "10px")
+            .css("border-style", "solid");
 
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"date_" + y + "\"></p>");
         $("[id=five_day_forecast_element_" + y + "]").append("<p id=\"icon_" + y + "\"></p>");

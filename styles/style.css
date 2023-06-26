@@ -13,6 +13,7 @@ body {
 .content_holder {
     box-shadow: 5px 5px 3px lightgray;
     background-color: white;
+    border-radius: 10px;
 }
 
 /* header element styling */
@@ -20,7 +21,7 @@ body {
     display: flex;
     justify-content: center;
 
-    border-style: groove;
+    border-style: solid;
 
     margin: 10px;
 }
@@ -31,7 +32,7 @@ body {
     justify-content: space-around;
     height: 700px;
 
-    border-style: groove;
+    border-style: solid;
 
     margin: 10px;
 }
@@ -42,6 +43,7 @@ body {
     align-items: center;
 
     border-radius: 10px;
+    border-style: solid;
 
     margin: 10px;
 
@@ -52,16 +54,6 @@ body {
     resize: none;
 }
 
-/* recently searched cities buttons styling */
-#city_search_recent {
-    display: flex;
-    flex-direction: column;
-}
-
-.city_search_spacing {
-    margin: 5px;
-}
-
 #weather_city_display {
     display: flex;
     flex-direction: column;
@@ -69,7 +61,7 @@ body {
 
     width: 75%;
 
-    border-style: groove;
+    border-style: solid;
 
     margin: 10px;
 }
@@ -77,9 +69,10 @@ body {
 #city_display_main {
     margin: 10px;
 
-    background-color: rgba(0, 110, 255, 0.7);
-
     border-radius: 10px;
+
+    background-color: rgba(0, 110, 255, 0.7);
+    border-style: solid;
 }
 
 #display_main_title {
@@ -94,10 +87,18 @@ body {
     margin: 10px;
 }
 
+/* recently searched cities buttons styling */
+#city_search_recent {
+    display: flex;
+    flex-direction: column;
+}
+
+.city_search_spacing {
+    margin: 5px;
+}
+
 /* five day forecast elements styling */
 #city_display_five_day {
-    border-style: groove;
-
     margin: 10px;
 
     display: none;
@@ -118,7 +119,6 @@ body {
 
 #five_day_forecast_element {
     width: 15%;
-    border-style: groove;
     margin: 10px;
 }
 
