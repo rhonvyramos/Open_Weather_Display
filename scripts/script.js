@@ -31,8 +31,6 @@ let five_day_list = document.getElementById("five_day_list");
 // element that represents the button to clear recently searched cities
 let clear_recent_button = document.getElementById("clear_recent_button");
 
-var recently_searched_city;
-
 async function search_city(recently_searched) {
 
     // ends function if input is empty
@@ -132,6 +130,9 @@ async function search_city(recently_searched) {
     display_main_temp.innerHTML = "Temperature(°F): " + json_city_weather_data.main.temp + "°F";
     display_main_wind.innerHTML = "Wind Speed: " + json_city_weather_data.wind.speed + " MPH";
     display_main_humidity.innerHTML = "Humidity: " + json_city_weather_data.main.humidity + "%";
+
+    // returns the name of the city 
+    return json_city_weather_data.name;
 };
 
 // function that clears all elements inside the recently searched city section
@@ -139,20 +140,20 @@ function clear_recently_searched() {
     $("[id=city_search_recent]").empty();
 };
 
+// function to add a recently searched city as a new button 
 function create_recently_searched(city_name) {
-    // adds recently searched city as new button
-    // buttons for recently searched cities are saved and function almost identically to search city button
-    $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>");
-
-    /*$(".searched").on("click", function() {
-        console.log("button pressed")
-        search_city($(this).attr("id"));
-    });*/
+    $("[id=city_search_recent]").append("<button id=\"" + city_name + "\" class=\"searched\">" + city_name + "</button>")
+        .click(function() {
+            city_search_input.value = city_name;
+        });
 };
 
-city_search_button.addEventListener("click", function() {
-    search_city(city_search_input.value);
+// button to search input city
+city_search_button.addEventListener("click", async function() {
+    create_recently_searched(await search_city(city_search_input.value));
 });
+
+// button to clear recently searched cities list
 clear_recent_button.addEventListener("click", clear_recently_searched);
 
 
