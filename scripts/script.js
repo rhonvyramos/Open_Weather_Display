@@ -26,6 +26,7 @@ let display_main_wind = document.getElementById("display_main_wind");
 let display_main_humidity = document.getElementById("display_main_humidity");
 
 // elements that represent the five day forecast display
+let city_display_five_day = document.getElementById("city_display_five_day");
 let five_day_list = document.getElementById("five_day_list");
 
 // element that represents the button to clear recently searched cities
@@ -94,7 +95,7 @@ async function search_city(recently_searched) {
         $(five_day_list).append("<div id=\"five_day_forecast_element_" + y + "\"></div>")
 
         $("[id=five_day_forecast_element_" + y + "]")
-            .css("margin", "5px")
+            .css("margin", "20px")
             .css("background-color", "rgba(0, 110, 255, 0.7)")
             .css("padding", "10px")
             .css("border-radius", "10px");
@@ -122,6 +123,8 @@ async function search_city(recently_searched) {
         $("[id=humidity_" + y + "]").text("Humidity: " + city_five_day_forecast_list[y].main.humidity + "%")
             .css("font-size", "75%"); 
     };
+
+    city_display_five_day.style.display = "flex";
 
     // creates the main display elements
     $(display_main_title).text(json_city_weather_data.name);

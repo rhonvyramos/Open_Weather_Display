@@ -99,6 +99,11 @@ body {
     border-style: groove;
 
     margin: 10px;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #five_day_title {
