@@ -153,6 +153,7 @@ async function search_city(recently_searched) {
 // function that clears all elements inside the recently searched city section
 function clear_recently_searched() {
     $("[id=city_search_recent]").empty();
+    city_search_recent.innerHTML = "Search history emptied..."
 };
 
 // function to add a recently searched city as a new button 
